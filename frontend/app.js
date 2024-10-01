@@ -4,7 +4,6 @@ const loginForm = document.getElementById("loginForm");
 
 
 
-
 let socket;
 let typingTimeout;
 let token;
@@ -16,7 +15,7 @@ loginForm.addEventListener('submit', async (e) => {
     
     try {
         // שליחת בקשת התחברות לשרת
-        const response = await fetch('http://localhost:3000/login', {
+        const response = await fetch('http://localhost:3000/player/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,7 +26,7 @@ loginForm.addEventListener('submit', async (e) => {
         if (!response.ok) {
             throw new Error('התחברות נכשלה');
         }
-
+        
         const data = await response.json();
         token = data.accessToken;
         console.log('Token received:', token); // הדפסת הטוקן לקונסול
